@@ -1,0 +1,17 @@
+export const CITIES = [
+  { name: 'Chicago', lat: 41.8781, lng: -87.6298, density: 4500, gdp: 1.2 },
+  { name: 'New York', lat: 40.7128, lng: -74.006, density: 10500, gdp: 3.0 },
+  { name: 'Los Angeles', lat: 34.0522, lng: -118.2437, density: 3200, gdp: 1.5 },
+  { name: 'Washington DC', lat: 38.9072, lng: -77.0369, density: 3800, gdp: 1.5 },
+  { name: 'London', lat: 51.5074, lng: -0.1278, density: 5500, gdp: 2.0 },
+  { name: 'Moscow', lat: 55.7558, lng: 37.6173, density: 4800, gdp: 0.9 },
+  { name: 'Paris', lat: 48.8566, lng: 2.3522, density: 20000, gdp: 1.8 },
+  { name: 'Berlin', lat: 52.52, lng: 13.405, density: 3900, gdp: 1.1 },
+  { name: 'Tokyo', lat: 35.6762, lng: 139.6503, density: 6200, gdp: 2.5 },
+  { name: 'Beijing', lat: 39.9042, lng: 116.4074, density: 1300, gdp: 1.2 },
+  { name: 'Seoul', lat: 37.5665, lng: 126.978, density: 16000, gdp: 1.0 },
+  { name: 'Pyongyang', lat: 39.0194, lng: 125.7381, density: 2000, gdp: 0.1 },
+  { name: 'Mumbai', lat: 19.076, lng: 72.8777, density: 20000, gdp: 0.8 },
+  { name: 'Sydney', lat: -33.8688, lng: 151.2093, density: 400, gdp: 0.9 },
+  { name: 'Dubai', lat: 25.2048, lng: 55.2708, density: 800, gdp: 1.0 },
+]

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#0a0900"/>
+  <g fill="#c9a800">
+    <!-- Three blades: each spans 60°, inner r=4, outer r=13, centered at top then rotated -->
+    <path d="M14,12.54 L9.5,4.74 A13,13 0 0,1 22.5,4.74 L18,12.54 A4,4 0 0,0 14,12.54 Z"/>
+    <path d="M14,12.54 L9.5,4.74 A13,13 0 0,1 22.5,4.74 L18,12.54 A4,4 0 0,0 14,12.54 Z" transform="rotate(120,16,16)"/>
+    <path d="M14,12.54 L9.5,4.74 A13,13 0 0,1 22.5,4.74 L18,12.54 A4,4 0 0,0 14,12.54 Z" transform="rotate(240,16,16)"/>
+    <!-- Center circle -->
+    <circle cx="16" cy="16" r="2.5"/>
+  </g>
+</svg>

@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0a0900;
+  --color-panel: #0d0c00;
+  --color-primary: #c9a800;
+  --color-bright: #f0cc00;
+  --color-dim: #8a7c00;
+  --color-dimmer: #2a2600;
+  --color-border: rgba(201, 168, 0, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Scale root font proportionally — 16px floor, grows with viewport width */
+  font-size: clamp(16px, 1.1vw, 26px);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-primary);
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* Hide all scrollbars globally */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Global scanlines overlay — sits above everything, no pointer events */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.18) 2px,
+    rgba(0, 0, 0, 0.18) 4px
+  );
+}
+
+/* Subtle phosphor glow on text */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 50%, rgba(201, 168, 0, 0.03) 0%, transparent 70%);
+}
+
+/* Utility: terminal panel */
+.terminal-panel {
+  background: rgba(201, 168, 0, 0.03);
+  border: 1px solid var(--color-border);
+}
+
+/* Utility: section label */
+.section-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-dim);
+}
+
+/* Utility: blinking cursor */
+.cursor::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Ticker wrapper — hide scrollbar */
+.ticker-inner {
+  will-change: transform;
+  white-space: nowrap;
+}
+
+/* Progress bar */
+.progress-track {
+  background: rgba(201, 168, 0, 0.08);
+  border: 1px solid rgba(201, 168, 0, 0.2);
+  height: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--color-primary);
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-bright);
+  box-shadow: 0 0 6px var(--color-bright);
+}
+
+/* ── Picker dropdown scrollbar — restore for these elements ── */
+.nk-picker-scroll,
+.nk-mobile-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 0, 0.35) rgba(201, 168, 0, 0.04);
+  -ms-overflow-style: auto;
+}
+.nk-picker-scroll::-webkit-scrollbar,
+.nk-mobile-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.nk-picker-scroll::-webkit-scrollbar-track,
+.nk-mobile-scroll::-webkit-scrollbar-track {
+  background: rgba(201, 168, 0, 0.04);
+  border-left: 1px solid rgba(201, 168, 0, 0.08);
+}
+.nk-picker-scroll::-webkit-scrollbar-thumb,
+.nk-mobile-scroll::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 0, 0.35);
+  border-radius: 0;
+}
+.nk-picker-scroll::-webkit-scrollbar-thumb:hover,
+.nk-mobile-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 0, 0.65);
+}
+
+/* ── Selected marker label — bomb-code blink ── */
+@keyframes nkSelectedBlink {
+  0% {
+    opacity: 1;
+  }
+  18% {
+    opacity: 1;
+  }
+  22% {
+    opacity: 0.05;
+  }
+  26% {
+    opacity: 1;
+  }
+  44% {
+    opacity: 1;
+  }
+  48% {
+    opacity: 0.05;
+  }
+  52% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.nk-selected-label {
+  animation: nkSelectedBlink 2.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(255, 72, 0, 0.7));
+}
+
+/* ── Leaflet dark theme overrides ── */
+.leaflet-container {
+  background: #0a0900 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+}
+
+/* Match Leaflet cursor to globe (grab/grabbing) */
+.leaflet-container,
+.leaflet-grab,
+.leaflet-tile-container,
+.leaflet-map-pane,
+.leaflet-layer {
+  cursor: grab !important;
+}
+.leaflet-dragging .leaflet-grab,
+.leaflet-dragging .leaflet-grabbing,
+.leaflet-dragging .leaflet-container {
+  cursor: grabbing !important;
+}
+
+/* Leaflet zoom control hidden — replaced by custom React buttons in ImpactViz */
+.leaflet-control-zoom {
+  display: none !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(10, 9, 0, 0.8) !important;
+  color: #2a2600 !important;
+  font-size: 8px !important;
+  letter-spacing: 0.05em !important;
+}
+
+.leaflet-control-attribution a {
+  color: #5a5200 !important;
+}
+
+.leaflet-tile-pane {
+  filter: brightness(0.85) saturate(0.7);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-split {
+    flex-direction: column;
+  }
+  .globe-half,
+  .impact-half {
+    width: 100% !important;
+    flex: 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
