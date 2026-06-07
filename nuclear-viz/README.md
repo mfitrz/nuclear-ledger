@@ -62,6 +62,8 @@ Opens at `http://localhost:5173`. Build: `npm run build` (output to `dist/`).
 
 ## AI Workflow
 
+Design ideation and theming were explored using **Stitch AI** — it helped shape the terminal aesthetic, colour palette, and overall visual direction before implementation began.
+
 Built with Claude Code. What worked: specifying exact hex values in prompts, describing GSAP animation patterns with explicit easing and duration values, and providing the blast radius formula directly. Globe rotation re-centering required a few iterations - early generations interrupted mid-animation rather than killing the prior tween. The cluster-picker scroll isolation was tricky to describe; I had to frame the exact event propagation problem rather than just the desired outcome.
 
 What didn't work: asking the model to "make it feel more tense" produced generic changes. I had to translate intent into specific CSS (text-shadow intensity, animation duration, letter-spacing) and re-prompt with concrete values.
