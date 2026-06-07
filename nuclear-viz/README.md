@@ -2,7 +2,7 @@
 
 A Fallout-inspired terminal interface visualizing 72 years of nuclear detonations (1945–2017) as a classified operations dashboard.
 
-**Live:** [deployed URL here]
+**Live:** https://nuclear-ledger.vercel.app/
 
 ---
 
