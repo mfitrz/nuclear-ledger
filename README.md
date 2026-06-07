@@ -53,7 +53,7 @@ Opens at `http://localhost:5173`. Build: `npm run build` (output to `dist/`).
 
 ## What I Cut
 
-- Timeline scrubber / year filter (~2hr estimate) - would show the Cold War arms race accelerating then slowing down, which is the story the data is really telling
+- Timeline scrubber / year filter would show the Cold War arms race accelerating then slowing down, which is the story the data is really telling
 - Nukemap-accurate blast radii (used simplified 1.84 * yield^(1/3) km model instead)
 - Animated fallout drift particles on the globe
 - Global fallout spread and environmental impact visualization
@@ -64,10 +64,10 @@ Opens at `http://localhost:5173`. Build: `npm run build` (output to `dist/`).
 
 Built with Claude Code. What worked: specifying exact hex values in prompts, describing GSAP animation patterns with explicit easing and duration values, and providing the blast radius formula directly. Globe rotation re-centering required a few iterations - early generations interrupted mid-animation rather than killing the prior tween. The cluster-picker scroll isolation was tricky to describe; I had to frame the exact event propagation problem rather than just the desired outcome.
 
-What didn't work: asking the model to "make it feel more tense" produced generic changes. I had to translate intent into specific CSS (text-shadow intensity, animation duration, letter-spacing) and re-prompt with concrete values. Broad aesthetic direction doesn't land - mechanical specifics do.
+What didn't work: asking the model to "make it feel more tense" produced generic changes. I had to translate intent into specific CSS (text-shadow intensity, animation duration, letter-spacing) and re-prompt with concrete values.
 
 ---
 
 ## Data
 
-101 records from the provided dataset. Blast radii and casualty figures are approximations using the `1.84 * yield^(1/3)` km model - not Nukemap-accurate, not intended for operational use.
+101 records from the provided dataset. Blast radii and casualty figures are approximations using the `1.84 * yield^(1/3)` km model.
